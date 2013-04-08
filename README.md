@@ -33,6 +33,22 @@ xasource[1|2].sql
 These are mysqldump files of that create two databases that can be
 used with mysql-connector-jar to demonstrate distributed transactions.
 
+PRESENTATION OUTLINE
+====================
+
+* What are distributed transactions?
+* Use cases for distributed transactions
+* X/Open DTP
+* Sample money transfer transaction
+  - How to do it wrong?
+  - How to do it right?
+  - Anatomy of the transaction
+  - Failure Scenarios
+* Distributed Transaction Performance
+* MySQL XA Gotchas
+* Questions
+
+
 ADDITIONAL REFERENCES
 =====================
 
