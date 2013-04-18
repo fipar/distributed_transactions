@@ -57,7 +57,7 @@ public class Sample {
       final long multiTestDuration = multiFinishTime - multiStartTime;
       System.out.println("Elapsed time: "+ multiTestDuration +" milliseconds");
 
-      String nicelyFormattedOutput = String.format("%d%c%d%c%d%c%d%c%d%c",
+      String nicelyFormattedOutput = String.format("%d%c%d%c%d%c%d%c%d",
           numberOfDatabases, '\t', numberOfUsers, '\t', numberOfTransactions, 
           '\t', singleTestDuration,  '\t', multiTestDuration);
       System.out.println(nicelyFormattedOutput);
