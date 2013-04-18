@@ -36,6 +36,10 @@ public class Setup {
   }
 
   public MysqlDataSource getDataSource() {
+    MysqlDataSource dataSource = new MysqlDataSource();
+    dataSource.setServerName(HOST);
+    dataSource.setUser(USER);
+    dataSource.setPassword(PASSWORD);
     return dataSource;
   }
 
