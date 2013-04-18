@@ -12,7 +12,7 @@ import javax.transaction.xa.XAException;
 import javax.transaction.xa.XAResource;
 import javax.transaction.xa.Xid;
 
-public class MultiDatabaseExample {
+public class MultiDatabaseExample implements Runnable {
   private final List<Transaction> transactions;
   private final HashMap<Integer,Integer>userShards;
   private final Setup setup;
@@ -22,6 +22,11 @@ public class MultiDatabaseExample {
     this.userShards = setup.getUserShards();
     this.setup = setup;
   }
+
+    public void run() {
+	try { performTransactions(); } catch (Exception e) {e.printStackTrace(); }
+    }
+
 
   public int performTransactions() throws Exception {
     int successfulTransactions = 0;

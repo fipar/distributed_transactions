@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 
-public class SingleDatabaseExample {
+public class SingleDatabaseExample implements Runnable {
 
   private final List<Transaction> transactions;
   private final MysqlDataSource dataSource;
@@ -16,6 +16,10 @@ public class SingleDatabaseExample {
     this.dataSource = dataSource;
     dataSource.setDatabaseName("xa_database_0");
   }
+
+    public void run() {
+	try { performTransactions(); } catch (Exception e) {e.printStackTrace(); }
+    }
 
   public int performTransactions() {
     int successfulTransactions = 0;
