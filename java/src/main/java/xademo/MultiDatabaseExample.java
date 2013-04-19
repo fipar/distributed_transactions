@@ -11,6 +11,7 @@ import javax.sql.XAConnection;
 import javax.transaction.xa.XAException;
 import javax.transaction.xa.XAResource;
 import javax.transaction.xa.Xid;
+import java.util.Random;
 
 public class MultiDatabaseExample implements Runnable {
   private final List<Transaction> transactions;
@@ -30,6 +31,7 @@ public class MultiDatabaseExample implements Runnable {
 
   public int performTransactions() throws Exception {
     int successfulTransactions = 0;
+    Random rgen = new Random();
     try {
       for (Transaction transaction : transactions) {
         String sourceDBName = "xa_database_"+userShards.get(transaction.sourceUserId);
@@ -44,8 +46,8 @@ public class MultiDatabaseExample implements Runnable {
         Connection conn2 = destinationXAConnection.getConnection();
         XAResource xar1 = sourceXAConnection.getXAResource();
         XAResource xar2 = destinationXAConnection.getXAResource();
-        Xid xid1 = createXid(1);
-        Xid xid2 = createXid(2);
+        Xid xid1 = createXid(rgen.nextInt(10000));
+        Xid xid2 = createXid(rgen.nextInt(10000));
         xar1.start(xid1, XAResource.TMNOFLAGS);
         xar2.start(xid2, XAResource.TMNOFLAGS);
         Statement sourceStatement = conn1.createStatement();
