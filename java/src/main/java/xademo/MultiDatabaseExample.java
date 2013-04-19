@@ -97,7 +97,8 @@ public class MultiDatabaseExample implements Runnable {
       }
     } catch (SQLException e) {
       System.err.println("SQL Exception for multi database; unexpected failure.");
-      e.printStackTrace();
+      e.printStackTrace(); 
+      return -1;
     }
     return successfulTransactions;
   }
