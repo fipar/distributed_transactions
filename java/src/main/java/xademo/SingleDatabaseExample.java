@@ -18,7 +18,7 @@ public class SingleDatabaseExample implements Runnable {
   }
 
     public void run() {
-	try { performTransactions(); } catch (Exception e) {e.printStackTrace(); }
+	try { performTransactions(); } catch (Exception e) { }
     }
 
   public int performTransactions() {

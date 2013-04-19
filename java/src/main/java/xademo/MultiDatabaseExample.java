@@ -25,7 +25,7 @@ public class MultiDatabaseExample implements Runnable {
   }
 
     public void run() {
-	try { performTransactions(); } catch (Exception e) {e.printStackTrace(); }
+	try { performTransactions(); } catch (Exception e) { }
     }
 
 
@@ -46,8 +46,8 @@ public class MultiDatabaseExample implements Runnable {
         Connection conn2 = destinationXAConnection.getConnection();
         XAResource xar1 = sourceXAConnection.getXAResource();
         XAResource xar2 = destinationXAConnection.getXAResource();
-        Xid xid1 = createXid(rgen.nextInt(10000000));
-        Xid xid2 = createXid(rgen.nextInt(10000000));
+        Xid xid1 = createXid(rgen.nextInt(1000000000));
+        Xid xid2 = createXid(rgen.nextInt(1000000000));
         xar1.start(xid1, XAResource.TMNOFLAGS);
         xar2.start(xid2, XAResource.TMNOFLAGS);
         Statement sourceStatement = conn1.createStatement();
